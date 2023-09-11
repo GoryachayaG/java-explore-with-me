@@ -13,13 +13,13 @@ import javax.validation.Valid;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import static ru.practicum.stats.dto.Constants.FOR_FORMATTER;
+
 @RestController
 @RequiredArgsConstructor
 @Slf4j
 public class StatsController {
     private final StatsService service;
-
-    private final String forFormatter = "yyyy-MM-dd HH:mm:ss";
 
     @PostMapping("/hit")
     @ResponseStatus(HttpStatus.CREATED)
@@ -31,8 +31,8 @@ public class StatsController {
 
     @GetMapping("/stats")
     @ResponseStatus(HttpStatus.OK)
-    public List<StatsDto> getStats(@RequestParam @DateTimeFormat(pattern = forFormatter) LocalDateTime start,
-                                   @RequestParam @DateTimeFormat(pattern = forFormatter) LocalDateTime end,
+    public List<StatsDto> getStats(@RequestParam @DateTimeFormat(pattern = FOR_FORMATTER) LocalDateTime start,
+                                   @RequestParam @DateTimeFormat(pattern = FOR_FORMATTER) LocalDateTime end,
                                    @RequestParam(required = false) List<String> uris,
                                    @RequestParam(defaultValue = "false") boolean unique) {
         log.info("Запрос на получение статистики");
