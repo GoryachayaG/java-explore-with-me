@@ -19,7 +19,7 @@ import static ru.practicum.stats.dto.Constants.FOR_FORMATTER;
 @Service
 public class StatsClient {
 
-    @Value("${STATS_SERVER_URL}")
+    @Value("${stats-server.url}")
     private String serverUrl;
 
     private final RestTemplate restTemplate;

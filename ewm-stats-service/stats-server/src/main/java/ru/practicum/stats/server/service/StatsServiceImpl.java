@@ -17,6 +17,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 @Slf4j
+@Transactional
 public class StatsServiceImpl implements StatsService {
     private final StatsRepository repository;
 

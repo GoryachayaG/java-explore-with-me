@@ -85,9 +85,7 @@ public class EventServiceImpl implements EventService {
 
     @Transactional
     @Override
-    public EventFullDto updateEventByIdByUser(Long userId,
-                                              Long eventId,
-                                              UpdateEventDto updateEventDto) {
+    public EventFullDto updateEventByIdByUser(Long userId, Long eventId, UpdateEventDto updateEventDto) {
         Event event = getEvent(eventId);
         validateInitiator(userId, event.getInitiator().getId());
         if (event.getState().equals(EventState.PUBLISHED)) {
@@ -364,7 +362,7 @@ public class EventServiceImpl implements EventService {
             uris.add(uri);
         }
         List<StatsDto> result = client.getStats(START, LocalDateTime.now(), uris, true);
-        log.info("Отправлен запрос на получение статистики просмиотров");
+        log.info("Отправлен запрос на получение статистики просмотров");
         Map<Long, Long> views = new HashMap<>();
         for (StatsDto dto : result) {
             String uri = dto.getUri();
