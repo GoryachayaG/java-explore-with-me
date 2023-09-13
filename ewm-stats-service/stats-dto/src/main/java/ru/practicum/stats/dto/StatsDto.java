@@ -5,6 +5,7 @@ import lombok.*;
 @Data
 @Builder
 @AllArgsConstructor
+@NoArgsConstructor
 public class StatsDto {
 
     private String app; // Название сервиса
