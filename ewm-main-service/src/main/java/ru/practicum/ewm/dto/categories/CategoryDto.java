@@ -1,9 +1,7 @@
 package ru.practicum.ewm.dto.categories;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.NotBlank;
@@ -12,11 +10,12 @@ import javax.validation.constraints.NotBlank;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class CategoryDto {
 
-    private Long id;
+    Long id;
 
     @NotBlank(message = "Укажите имя для категории")
     @Length(min = 1, max = 50)
-    private String name;
+    String name;
 }

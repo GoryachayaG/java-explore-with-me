@@ -13,7 +13,7 @@ public class EventMapper {
         event.setDescription(newEventDto.getDescription());
         event.setEventDate(newEventDto.getEventDate());
         event.setLocation(LocationMapper.toLocation(newEventDto.getLocation()));
-        event.setPaid(newEventDto.getPaid());
+        event.setPaid(newEventDto.isPaid());
         event.setParticipantLimit(newEventDto.getParticipantLimit());
         event.setRequestModeration(newEventDto.getRequestModeration());
         event.setTitle(newEventDto.getTitle());

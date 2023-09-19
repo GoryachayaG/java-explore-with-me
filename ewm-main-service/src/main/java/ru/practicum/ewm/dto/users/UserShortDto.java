@@ -1,9 +1,7 @@
 package ru.practicum.ewm.dto.users;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.NotBlank;
@@ -12,11 +10,12 @@ import javax.validation.constraints.NotBlank;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class UserShortDto {
 
-    private Long id;
+    Long id;
 
     @NotBlank
     @Length(min = 2, max = 250)
-    private String name;
+    String name;
 }

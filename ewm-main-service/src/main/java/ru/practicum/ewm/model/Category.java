@@ -1,6 +1,7 @@
 package ru.practicum.ewm.model;
 
 import lombok.*;
+import lombok.experimental.FieldDefaults;
 
 import javax.persistence.*;
 
@@ -11,12 +12,13 @@ import javax.persistence.*;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    Long id;
 
     @Column(name = "category_name", nullable = false, unique = true)
-    private String name;
+    String name;
 }

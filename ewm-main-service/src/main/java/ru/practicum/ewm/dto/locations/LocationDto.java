@@ -1,19 +1,18 @@
 package ru.practicum.ewm.dto.locations;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class LocationDto {
 
-    private Long id;
+    Long id;
 
-    private Float lat;
+    Float lat;
 
-    private Float lon;
+    Float lon;
 }

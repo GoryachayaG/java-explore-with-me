@@ -20,14 +20,14 @@ public class AdminCategoryController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public CategoryDto createCategory(@Valid @RequestBody CategoryDto categoryDto) {
-        log.info("Запрос на добавление новой категории");
+        log.info("Запрос на добавление новой категории {}", categoryDto);
         return categoryService.createCategory(categoryDto);
     }
 
     @DeleteMapping("/{catId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteCategoryById(@PathVariable Long catId) {
-        log.info("Запрос на удаление категории");
+        log.info("Запрос на удаление категории с id = {}", catId);
         categoryService.deleteCategoryById(catId);
     }
 

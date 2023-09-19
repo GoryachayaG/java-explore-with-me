@@ -1,6 +1,7 @@
 package ru.practicum.ewm.model;
 
 import lombok.*;
+import lombok.experimental.FieldDefaults;
 
 import javax.persistence.*;
 
@@ -11,15 +12,16 @@ import javax.persistence.*;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class Location {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    Long id;
 
     @Column(name = "lat", nullable = false)
-    private Float lat;
+    Float lat;
 
     @Column(name = "lon", nullable = false)
-    private Float lon;
+    Float lon;
 }

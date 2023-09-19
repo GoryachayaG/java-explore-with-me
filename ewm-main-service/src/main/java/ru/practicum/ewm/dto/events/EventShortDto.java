@@ -1,10 +1,8 @@
 package ru.practicum.ewm.dto.events;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
 import ru.practicum.ewm.dto.categories.CategoryDto;
 import ru.practicum.ewm.dto.users.UserShortDto;
 
@@ -15,24 +13,25 @@ import static ru.practicum.stats.dto.Constants.FOR_FORMATTER;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class EventShortDto {
 
-    private String annotation;
+    String annotation;
 
-    private CategoryDto category;
+    CategoryDto category;
 
-    private Integer confirmedRequests;
+    Integer confirmedRequests;
 
     @JsonFormat(pattern = FOR_FORMATTER)
-    private LocalDateTime eventDate;
+    LocalDateTime eventDate;
 
-    private Long id;
+    Long id;
 
-    private UserShortDto initiator;
+    UserShortDto initiator;
 
-    private Boolean paid;
+    boolean paid;
 
-    private String title;
+    String title;
 
-    private Long views;
+    Long views;
 }

@@ -2,6 +2,7 @@ package ru.practicum.ewm.dto.events;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
+import lombok.experimental.FieldDefaults;
 import ru.practicum.ewm.dto.locations.LocationDto;
 import ru.practicum.ewm.model.enums.StateAction;
 import ru.practicum.ewm.validation.EventDateValidator;
@@ -15,30 +16,31 @@ import static ru.practicum.stats.dto.Constants.FOR_FORMATTER;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class UpdateEventDto {
 
     @Size(min = 20, max = 2000)
-    private String annotation;
+    String annotation;
 
-    private Long category;
+    Long category;
 
     @Size(min = 20, max = 7000)
-    private String description;
+    String description;
 
     @JsonFormat(pattern = FOR_FORMATTER)
     @EventDateValidator
-    private LocalDateTime eventDate;
+    LocalDateTime eventDate;
 
-    private LocationDto location;
+    LocationDto location;
 
-    private Boolean paid;
+    Boolean paid;
 
-    private Integer participantLimit;
+    Integer participantLimit;
 
-    private Boolean requestModeration;
+    Boolean requestModeration;
 
-    private StateAction stateAction;
+    StateAction stateAction;
 
     @Size(min = 3, max = 120)
-    private String title;
+    String title;
 }

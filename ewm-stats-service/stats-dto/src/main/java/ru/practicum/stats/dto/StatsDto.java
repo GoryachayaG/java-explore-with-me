@@ -1,17 +1,19 @@
 package ru.practicum.stats.dto;
 
 import lombok.*;
+import lombok.experimental.FieldDefaults;
 
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class StatsDto {
 
-    private String app; // Название сервиса
+    String app; // Название сервиса
 
-    private String uri; // URI сервиса
+    String uri; // URI сервиса
 
-    private Long hits; //  Количество просмотров
+    Long hits; //  Количество просмотров
 }
 

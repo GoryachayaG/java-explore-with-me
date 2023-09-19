@@ -1,6 +1,7 @@
 package ru.practicum.ewm.model;
 
 import lombok.*;
+import lombok.experimental.FieldDefaults;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -13,23 +14,24 @@ import java.util.Set;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class Compilation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    Long id;
 
     @ManyToMany
     @JoinTable(name = "events_compilations",
             joinColumns = @JoinColumn(name = "compilation_id"),
             inverseJoinColumns = @JoinColumn(name = "event_id"))
-    private Set<Event> events = new HashSet<>();
+    Set<Event> events = new HashSet<>();
 
     @Column(name = "pinned")
-    private Boolean pinned;
+    Boolean pinned;
 
     @Column(name = "title", nullable = false)
-    private String title;
+    String title;
 
     @PrePersist
     public void prePersist() {

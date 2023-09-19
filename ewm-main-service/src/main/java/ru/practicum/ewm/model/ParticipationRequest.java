@@ -1,6 +1,7 @@
 package ru.practicum.ewm.model;
 
 import lombok.*;
+import lombok.experimental.FieldDefaults;
 import ru.practicum.ewm.model.enums.RequestStatus;
 
 import javax.persistence.*;
@@ -13,24 +14,25 @@ import java.time.LocalDateTime;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class ParticipationRequest {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    Long id;
 
     @Column(name = "created", nullable = false)
-    private LocalDateTime created;
+    LocalDateTime created;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "event_id", nullable = false)
-    private Event event;
+    Event event;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "requester_id", nullable = false)
-    private User requester;
+    User requester;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false)
-    private RequestStatus status;
+    RequestStatus status;
 }

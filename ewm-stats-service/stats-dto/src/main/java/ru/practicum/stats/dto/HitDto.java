@@ -2,6 +2,7 @@ package ru.practicum.stats.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
+import lombok.experimental.FieldDefaults;
 
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
@@ -13,6 +14,7 @@ import static ru.practicum.stats.dto.Constants.FOR_FORMATTER;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class HitDto {
     Long id; // id записи
 
