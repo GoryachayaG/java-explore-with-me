@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.practicum.stats.dto.StatsDto;
 import ru.practicum.stats.dto.HitDto;
+import ru.practicum.stats.server.exceptions.BadRequestException;
 import ru.practicum.stats.server.mapper.HitMapper;
 import ru.practicum.stats.server.model.Hit;
 import ru.practicum.stats.server.repository.StatsRepository;
@@ -16,6 +17,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 @Slf4j
+@Transactional
 public class StatsServiceImpl implements StatsService {
     private final StatsRepository repository;
 
@@ -30,6 +32,10 @@ public class StatsServiceImpl implements StatsService {
     @Override
     @Transactional(readOnly = true)
     public List<StatsDto> getStats(LocalDateTime start, LocalDateTime end, List<String> uris, boolean unique) {
+        if (end.isBefore(start)) {
+            throw new BadRequestException("Значение поля end не может быть раньше значения поля start");
+        }
+
         if (unique) {
             if (uris != null) {
                 log.info("Получили статистику по заданным uri и ip");
