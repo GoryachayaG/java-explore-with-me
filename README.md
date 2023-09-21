@@ -1,2 +1,6 @@
 # java-explore-with-me
-Template repository for ExploreWithMe project.
+Приложение — афиша. В котором можно предложить какое-либо событие 
+от выставки до похода в кино и собрать компанию для участия в нём.
+
+Ссылка на пул-реквест:
+https://github.com/GoryachayaG/java-explore-with-me/pull/5
