@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.practicum.ewm.dto.comments.CommentDto;
 import ru.practicum.ewm.dto.comments.NewCommentDto;
-import ru.practicum.ewm.exception.BadRequestException;
+import ru.practicum.ewm.exception.ConflictException;
 import ru.practicum.ewm.exception.ObjectNotFoundException;
 import ru.practicum.ewm.mapper.CommentMapper;
 import ru.practicum.ewm.model.Comment;
@@ -38,7 +38,7 @@ public class CommentServiceImpl implements CommentService {
         User user = getUser(userId);
         Event event = getEvent(eventId);
         if (!event.getState().equals(EventState.PUBLISHED)) {
-            throw new BadRequestException("Комментарий можно добавить только к опубликованному событию");
+            throw new ConflictException("Комментарий можно добавить только к опубликованному событию");
         }
         Comment comment = CommentMapper.toComment(newCommentDto, user, event);
         Comment savedComment = repository.save(comment);
@@ -144,7 +144,7 @@ public class CommentServiceImpl implements CommentService {
 
     private void validateAuthor(Long userId, Long authorId) {
         if (!userId.equals(authorId)) {
-            throw new BadRequestException("Пользователь не является автором комментария");
+            throw new ConflictException("Пользователь не является автором комментария");
         }
     }
 }
